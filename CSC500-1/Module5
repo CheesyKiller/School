@@ -1,0 +1,39 @@
+# Author: Jacob Abts
+# Submission Date: 8/18/2024
+# CSU Global - CSC500-1
+
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+def averageRainfall():
+    years = int(input("\nHow many years of data is there: "))
+    print()
+
+    data = []
+
+    for year in range(0, years):
+        for month in months:
+            data.append(float(input(f"Year {year + 1}, {month}: ")))
+    
+    print(f"\nIn {len(data)} months, it rained a total of {sum(data)} inches. Meaning an average of {sum(data) / len(data)} inches a month.")
+
+pointThresholds = {
+    0: 0,
+    2: 5,
+    4: 15,
+    6: 30,
+    8: 60
+}
+
+def bookstorePoints():
+    books = int(input("\nHow many books did you purchase this month: "))
+    points = 0
+
+    for threshold, pointValue in pointThresholds.items():
+        if threshold > books:
+            break
+        points = pointValue
+
+    print(f"You earned {points} points this month.\n")
+
+averageRainfall()
+bookstorePoints()
