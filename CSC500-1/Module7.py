@@ -38,13 +38,15 @@ def PrintCourseAssigned(course):
     found = False
     for courseID, key in room_numbers.items():
         if (course == courseID):
-            print(f"\n{course}\nRoom Number: {room_numbers[courseID]}\nInstructor: {instructors[courseID]}\nMeeting Time: {meeting_times[courseID]}")
+            time = 12 if (meeting_times[course] % 12) == 12 else (meeting_times[course] % 12)
+            time_indicator = "a" if (meeting_times[course] < 12) else "p"
+            print(f"\n{course}\nRoom Number: {room_numbers[courseID]}\nInstructor: {instructors[courseID]}\nMeeting Time: {time} {time_indicator}.m.")
             return
     print(f"{course}: Not found!")
 
 def PrintCourseBetter(course):
     info = course_info[course]
-    print(f"\n{course}\nRoom Number: {info[0]}\nInstructor: {info[1]}\nMeeting Time: {info[2]}")
+    print(f"\n{course}\nRoom Number: {info[0]}\nInstructor: {info[1]}\nMeeting Time: {(12 if (info[2] % 12) == 0 else (info[2] % 12))} {'a' if (info[2] < 12) else 'p'}.m.")
 
 def Main():
     course_name = input("Please enter a course to search: ")
